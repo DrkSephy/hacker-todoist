@@ -3,5 +3,6 @@ import secrets
 
 user = todoist.login(secrets.credentials['username'], secrets.credentials['password'])
 project = user.get_project('Github')
-project.add_task('New Task!')
+project.add_task('New Task!!!!!!!!')
+user.add_project('New list')
 
