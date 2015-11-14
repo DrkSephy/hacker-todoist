@@ -1,0 +1,3 @@
+pytodoist==2.0.3
+requests==2.8.1
+wsgiref==0.1.2
