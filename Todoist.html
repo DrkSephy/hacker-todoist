@@ -222,7 +222,7 @@ ga('send', 'pageview');
                                 </tbody>
                             </table>
                         </li>
-                        <li class="manager indent_1" id="github">
+                        <li class="manager indent_1" id="github" style="display: none;">
                             <form>
                                 <table width="100%">
                                     <tbody>
@@ -233,7 +233,7 @@ ga('send', 'pageview');
                                                         <tr>
                                                             <td class="text_box_holder">
                                                                 <div class="div_color counter_color icon-project menu_icon" id="color_selector" style="color: rgb(204, 204, 204);"></div>
-                                                                <div tabindex="1" autocomplete="off" withplaceholders="undefined" class="richtext_editor" contenteditable="true"></div>
+                                                                <div tabindex="1" autocomplete="off" placeholder="undefined" class="richtext_editor" id="thing1" contenteditable="true"></div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -272,14 +272,15 @@ ga('send', 'pageview');
 
                     <div id="project_list_man" class="left_list_man_holder">
                         <div class="left_list_man actions"><a class="action"><span class="icon icon-add"></span>Add Project</a></div>
-                        <div class="left_list_man actions"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Github Project</a></div>
+                        <div class="left_list_man actions" id="thingy"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Github Project</a></div>
 
                         <!-- To do the click thing -->
                         <script>
-                            $("#thing2").click(function(){
+                            $("#thingy").click(function(){
                                 // Holds the product ID of the clicked element
                                 //var productId = $(this).attr('class').replace('show ', '');
                                 console.log("Someone poked me!");
+                                $('#github').show();
                             });
                         </script>
 
