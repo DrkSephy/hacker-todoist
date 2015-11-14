@@ -22,12 +22,9 @@ def batchTasks(username, repository):
 			if datum['assignee'] != None:
 					if datum['assignee']['login'] == 'DrkSephy':
 						user['username'] = datum['assignee']['login']
-						user['description'] = datum['body']
+						user['title'] = datum['title']
 						user['due'] = datum['milestone']['due_on']
 						users.append(user)
 	return users
 
-
-stuff = batchTasks('legionJS', 'legionJS')
-print stuff
 
