@@ -7,6 +7,7 @@ import moment
 # Iterate over each dictionary
 # data is an array of python dictionaries
 
+# Fetches data for Github
 def batchTasks(username, repository):
 	"""
 	Fetches all Github issues for the given user in a repository.
@@ -28,4 +29,6 @@ def batchTasks(username, repository):
 						user['due'] = m.format('YYYY-M-D H:M')
 						users.append(user)
 	return users
+
+	
 
