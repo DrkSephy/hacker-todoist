@@ -1,10 +1,11 @@
 import secrets
 import issues
+import bitbucket
 from pytodoist import todoist
 
-def sync(name):
+def sync(name, service):
 	"""
-	Creates a new project on todoist, and adds all Github
+	Creates a new project on todoist, and adds all <service>
 	issues into the todoist project.
 	"""
 	user = todoist.login(secrets.credentials['username'], secrets.credentials['password'])
@@ -14,12 +15,18 @@ def sync(name):
 	# Get a hold of the project just created
 	project = user.get_project(name)
 	# Get issue data
-	data = issues.batchTasks('legionJS', 'legionJS')
-	for task in data:
-		project.add_task(task['title'], date=task['due'])
-	return
+	if service == 'Github':
+		data = issues.batchTasks('legionJS', 'legionJS')
+		for task in data:
+			project.add_task(task['title'], date=task['due'])
+		return
+	else:
+		data = bitbucket.batchBitbucketTasks('DrkSephy', 'test')
+		for task in data:
+			print task['priority']
+			project.add_task(task['title'])
 
-sync('Newest List')
+sync('Bitbucket List', 'Bitbucket')
 
 
 
