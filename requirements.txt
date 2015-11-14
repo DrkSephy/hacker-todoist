@@ -1,3 +1,10 @@
+Django==1.8.6
+arrow==0.7.0
+moment==0.2.2
+python-dateutil==2.4.2
 pytodoist==2.0.3
+pytz==2015.7
 requests==2.8.1
+six==1.10.0
+times==0.7
 wsgiref==0.1.2
