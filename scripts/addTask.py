@@ -26,7 +26,7 @@ def sync(name, service):
 			print task['priority']
 			project.add_task(task['title'])
 
-sync('Bitbucket List', 'Bitbucket')
+sync('Github List', 'Github')
 
 
 
