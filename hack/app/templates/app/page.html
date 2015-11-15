@@ -196,16 +196,16 @@
                                                 </table>
                                                 <table>
                                                     <tbody>
-                                                       
+
                                                         <tr>
                                                             <input type="hidden" name="service" class="form-control div_color counter_color icon-project menu_icon" placeholder="Repo Name" value="github" required autofocus>
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table>
 
                                             </td>
-                                            
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -216,7 +216,59 @@
                                             <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
                                             <td align="right" class="td_extra"></td>
                                           -->
-                                          <button class="btn btn-lg btn-primary btn-block" type="submit">Get Data</button>
+                                          <button class="btn btn-lg btn-primary btn-block" type="submit">Get Github Data</button>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </li>
+                        <li class="manager indent_1" id="bitbucket" style="display: none;">
+                            <form id="login_form" method="post" action="/app/test/">
+                                {% csrf_token %}
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" class="form_content">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon" placeholder="User Name" value="" required autofocus>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <tr>
+                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon" placeholder="Repo Name" value="" required autofocus>
+                                                        </tr>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <input type="hidden" name="service" class="form-control div_color counter_color icon-project menu_icon" placeholder="Repo Name" value="bitbucket" required autofocus>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                          <!--
+                                            <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
+                                            <td align="right" class="td_extra"></td>
+                                          -->
+                                          <button class="btn btn-lg btn-primary btn-block" type="submit">Get Bitbucket Data</button>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -227,6 +279,7 @@
                     <div id="project_list_man" class="left_list_man_holder">
                         <div class="left_list_man actions"><a class="action"><span class="icon icon-add"></span>Add Project</a></div>
                         <div class="left_list_man actions" id="thingy"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Github Project</a></div>
+                        <div class="left_list_man actions" id="thingy2"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Bitbucket Project</a></div>
 
                         <!-- To do the click thing -->
                         <script>
@@ -235,6 +288,19 @@
                                 //var productId = $(this).attr('class').replace('show ', '');
                                 console.log("Someone poked me!");
                                 $('#github').show();
+
+                                $('#bitbucket').hide();
+                            });
+                        </script>
+
+                        <script>
+                            $("#thingy2").click(function(){
+                                // Holds the product ID of the clicked element
+                                //var productId = $(this).attr('class').replace('show ', '');
+                                console.log("Someone poked me!");
+                                $('#bitbucket').show();
+
+                                $('#github').hide();
                             });
                         </script>
 
@@ -268,8 +334,8 @@
                                     <h2 class="project_header section_header"><span>Github List</span></h2>
                                     <ul class="items">
                                       {% for datum in data %}
-                                      
-                                      
+
+
                                         <li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">
                                           <div class="invisible_space"></div>
                                           <table cellpadding="0" cellspacing="0">
@@ -301,9 +367,9 @@
                                       </li>
                                     {% endfor %}
                                     </ul>
-                                    
+
                                 </div>
-                                
+
                             </div>
                         </li>
                         <li class="agenda_item reorder_item" style="font-size: 0px; height: 0px; padding: 0px;"></li>
