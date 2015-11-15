@@ -11,7 +11,6 @@ def test(request):
 		username = request.POST.get('user')
 		repo = request.POST.get('repo')
 		service = request.POST.get('service')
-		print service
 		data = issues.batchTasks(username, repo, service)
 		return render(request, 'app/page.html', {'data': data})
 	else:
