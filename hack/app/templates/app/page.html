@@ -322,7 +322,55 @@
                                 </table>
                             </form>
                         </li>
+
+                        <!-- Twillio stuff -->
+                        <li class="manager indent_1" id="twillio" style="display: none;">
+                            <form id="login_form3" method="post" action="/app/test/">
+                                {% csrf_token %}
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" class="form_content">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" id="twillio_user" placeholder="Phone Number" value="" required autofocus>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                               <!-- <table>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <input type="hidden" name="service" id="twillioService" class="form-control div_color counter_color icon-project menu_icon" placeholder="twillio" value="github" required autofocus>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>-->
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                          <!--
+                                            <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
+                                            <td align="right" class="td_extra"></td>
+                                          -->
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItemBit()" type="submit">SMS Notifications</button> <a class="cancel" href="" tabindex="4">Cancel</a></td>
+
+                                         <!-- <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItem()" type="submit">Unsubscribe from SMS</button>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </li>
                     </ul>
+
 
                     <!-- Button on-click -->
                     <script>
@@ -338,8 +386,9 @@
 
                     <div id="project_list_man" class="left_list_man_holder">
                         <div class="left_list_man actions"><a class="action"><span class="icon icon-add"></span>Add Project</a></div>
-                        <div class="left_list_man actions" id="thingy"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Github Project</a></div>
+                        <div class="left_list_man actions" id="thingy"><a class="action"><span class="icon icon-add" id="#thing1"></span>Add Github Project</a></div>
                         <div class="left_list_man actions" id="thingy2"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Bitbucket Project</a></div>
+                        <div class="left_list_man actions" id="thingy3"><a class="action"><span class="icon icon-add" id="#thing3"></span>Add SMS Notifications</a></div>
 
                         <!-- To do the click thing -->
                         <script>
@@ -350,6 +399,8 @@
                                 $('#github').show();
 
                                 $('#bitbucket').hide();
+
+                                $('#twillio').hide();
                             });
                         </script>
 
@@ -361,7 +412,20 @@
                                 $('#bitbucket').show();
 
                                 $('#github').hide();
+
+                                $('#twillio').hide();
                             });
+                        </script>
+
+                        <script>
+                            $("#thingy3").click(function(){
+                                $('#twillio').show();
+
+                                $('#github').hide();
+
+                                $('#bitbucket').hide();
+
+                            }
                         </script>
 
                         <div class="controller actions his_ctrl" id="projects_archived_holder">
@@ -975,7 +1039,7 @@
         console.log($('#github_repo').val());
         $.ajax({
             url: "/app/test/",
-            type: "POST", 
+            type: "POST",
             data : {
                 username : $('#github_user').val(),
                 repo : $('#github_repo').val(),
@@ -992,34 +1056,34 @@
                         entry.due = '';
                     }
 
-                    $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' + 
-                        '<div class="invisible_space"></div>' + 
-                        '<table cellpadding="0" cellspacing="0">' + 
-                        '<tbody>' + 
-                        '<tr>' + 
-                        '<td class="checker">' + 
-                        '<div class="amicheckbox">' + 
-                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' + 
-                        '</div>' + 
-                        '</td>' + 
-                        '<td class="text_cursor content task_content_item">' + 
-                        '<div class="text_cursor div_due_date">' + 
-                        '<span class="date date_overdue">' + entry.due + '</span>' + 
-                        '</div>' + 
-                        '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' + 
-                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' + 
-                        '</span>' + 
-                        '<div>' + 
-                        '</div>' + 
-                        '</span>' + 
-                        '</td>' + 
-                        '<td class="menu">' + 
-                        '<div class="icon menu cmp_menu_on gear_menu">' + 
-                        '</div>' + 
-                        '</td>' + 
-                        '</tr>' + 
-                        '</tbody>' + 
-                        '</table>' + 
+                    $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' +
+                        '<div class="invisible_space"></div>' +
+                        '<table cellpadding="0" cellspacing="0">' +
+                        '<tbody>' +
+                        '<tr>' +
+                        '<td class="checker">' +
+                        '<div class="amicheckbox">' +
+                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' +
+                        '</div>' +
+                        '</td>' +
+                        '<td class="text_cursor content task_content_item">' +
+                        '<div class="text_cursor div_due_date">' +
+                        '<span class="date date_overdue">' + entry.due + '</span>' +
+                        '</div>' +
+                        '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' +
+                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' +
+                        '</span>' +
+                        '<div>' +
+                        '</div>' +
+                        '</span>' +
+                        '</td>' +
+                        '<td class="menu">' +
+                        '<div class="icon menu cmp_menu_on gear_menu">' +
+                        '</div>' +
+                        '</td>' +
+                        '</tr>' +
+                        '</tbody>' +
+                        '</table>' +
                         '</li>'
                         );
                 });
@@ -1037,34 +1101,34 @@
             console.log(data);
             data.forEach(function(entry) {
                 console.log(entry);
-                $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' + 
-                    '<div class="invisible_space"></div>' + 
-                    '<table cellpadding="0" cellspacing="0">' + 
-                    '<tbody>' + 
-                    '<tr>' + 
-                    '<td class="checker">' + 
-                    '<div class="amicheckbox">' + 
-                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' + 
-                    '</div>' + 
-                    '</td>' + 
-                    '<td class="text_cursor content task_content_item">' + 
-                    '<div class="text_cursor div_due_date">' + 
-                    '<span class="date date_overdue">' + entry.due + '</span>' + 
-                    '</div>' + 
-                    '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' + 
-                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' + 
-                    '</span>' + 
-                    '<div>' + 
-                    '</div>' + 
-                    '</span>' + 
-                    '</td>' + 
-                    '<td class="menu">' + 
-                    '<div class="icon menu cmp_menu_on gear_menu">' + 
-                    '</div>' + 
-                    '</td>' + 
-                    '</tr>' + 
-                    '</tbody>' + 
-                    '</table>' + 
+                $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' +
+                    '<div class="invisible_space"></div>' +
+                    '<table cellpadding="0" cellspacing="0">' +
+                    '<tbody>' +
+                    '<tr>' +
+                    '<td class="checker">' +
+                    '<div class="amicheckbox">' +
+                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' +
+                    '</div>' +
+                    '</td>' +
+                    '<td class="text_cursor content task_content_item">' +
+                    '<div class="text_cursor div_due_date">' +
+                    '<span class="date date_overdue">' + entry.due + '</span>' +
+                    '</div>' +
+                    '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' +
+                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' +
+                    '</span>' +
+                    '<div>' +
+                    '</div>' +
+                    '</span>' +
+                    '</td>' +
+                    '<td class="menu">' +
+                    '<div class="icon menu cmp_menu_on gear_menu">' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>' +
+                    '</tbody>' +
+                    '</table>' +
                     '</li>'
                 );
             });
@@ -1076,34 +1140,34 @@
             console.log(data);
             data.forEach(function(entry) {
                 console.log(entry);
-                $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' + 
-                    '<div class="invisible_space"></div>' + 
-                    '<table cellpadding="0" cellspacing="0">' + 
-                    '<tbody>' + 
-                    '<tr>' + 
-                    '<td class="checker">' + 
-                    '<div class="amicheckbox">' + 
-                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' + 
-                    '</div>' + 
-                    '</td>' + 
-                    '<td class="text_cursor content task_content_item">' + 
-                    '<div class="text_cursor div_due_date">' + 
-                    '<span class="date date_overdue">' + entry.due + '</span>' + 
-                    '</div>' + 
-                    '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' + 
-                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' + 
-                    '</span>' + 
-                    '<div>' + 
-                    '</div>' + 
-                    '</span>' + 
-                    '</td>' + 
-                    '<td class="menu">' + 
-                    '<div class="icon menu cmp_menu_on gear_menu">' + 
-                    '</div>' + 
-                    '</td>' + 
-                    '</tr>' + 
-                    '</tbody>' + 
-                    '</table>' + 
+                $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' +
+                    '<div class="invisible_space"></div>' +
+                    '<table cellpadding="0" cellspacing="0">' +
+                    '<tbody>' +
+                    '<tr>' +
+                    '<td class="checker">' +
+                    '<div class="amicheckbox">' +
+                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' +
+                    '</div>' +
+                    '</td>' +
+                    '<td class="text_cursor content task_content_item">' +
+                    '<div class="text_cursor div_due_date">' +
+                    '<span class="date date_overdue">' + entry.due + '</span>' +
+                    '</div>' +
+                    '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' +
+                    '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' +
+                    '</span>' +
+                    '<div>' +
+                    '</div>' +
+                    '</span>' +
+                    '</td>' +
+                    '<td class="menu">' +
+                    '<div class="icon menu cmp_menu_on gear_menu">' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>' +
+                    '</tbody>' +
+                    '</table>' +
                     '</li>'
                 );
             });
@@ -1115,7 +1179,7 @@
         console.log($('#github_repo').val());
         $.ajax({
             url: "/app/test/",
-            type: "POST", 
+            type: "POST",
             data : {
                 username : $('#bucket_user').val(),
                 repo : $('#bucket_repo').val(),
@@ -1132,34 +1196,34 @@
                         entry.due = '';
                     }
 
-                    $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' + 
-                        '<div class="invisible_space"></div>' + 
-                        '<table cellpadding="0" cellspacing="0">' + 
-                        '<tbody>' + 
-                        '<tr>' + 
-                        '<td class="checker">' + 
-                        '<div class="amicheckbox">' + 
-                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' + 
-                        '</div>' + 
-                        '</td>' + 
-                        '<td class="text_cursor content task_content_item">' + 
-                        '<div class="text_cursor div_due_date">' + 
-                        '<span class="date date_overdue">' + entry.due + '</span>' + 
-                        '</div>' + 
-                        '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' + 
-                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' + 
-                        '</span>' + 
-                        '<div>' + 
-                        '</div>' + 
-                        '</span>' + 
-                        '</td>' + 
-                        '<td class="menu">' + 
-                        '<div class="icon menu cmp_menu_on gear_menu">' + 
-                        '</div>' + 
-                        '</td>' + 
-                        '</tr>' + 
-                        '</tbody>' + 
-                        '</table>' + 
+                    $('#ajaxStuff').append('<li class="task_item item_6848962 not_shared menu_clickable indent_1 priority_1" id="item_6848962">' +
+                        '<div class="invisible_space"></div>' +
+                        '<table cellpadding="0" cellspacing="0">' +
+                        '<tbody>' +
+                        '<tr>' +
+                        '<td class="checker">' +
+                        '<div class="amicheckbox">' +
+                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">' +
+                        '</div>' +
+                        '</td>' +
+                        '<td class="text_cursor content task_content_item">' +
+                        '<div class="text_cursor div_due_date">' +
+                        '<span class="date date_overdue">' + entry.due + '</span>' +
+                        '</div>' +
+                        '<span class="text">' + entry.title  + '<span class="clickable note_icon note_icon_hidden">' +
+                        '<img src="https://d3ptyyxy2at9ui.cloudfront.net/76084e29cb2cf72b320e888edc583dfb.gif" width="15" height="14" class="cmp_comment clickable">' +
+                        '</span>' +
+                        '<div>' +
+                        '</div>' +
+                        '</span>' +
+                        '</td>' +
+                        '<td class="menu">' +
+                        '<div class="icon menu cmp_menu_on gear_menu">' +
+                        '</div>' +
+                        '</td>' +
+                        '</tr>' +
+                        '</tbody>' +
+                        '</table>' +
                         '</li>'
                     );
                 });
@@ -1177,7 +1241,7 @@
         console.log("Form was submitted");
         $(this).hide();
         create_post();
-    }); 
+    });
     </script>
 
     <script>
@@ -1186,7 +1250,7 @@
         console.log("Form was submitted");
         $(this).hide();
         create_bucketPost();
-    }); 
+    });
     </script>
 
     <script>
@@ -1194,7 +1258,7 @@
             console.log('Clicked Github button');
             $('#ajaxStuff').empty();
             display_data();
-        });     
+        });
     </script>
 
     <script>
@@ -1202,7 +1266,7 @@
             console.log('Clicked bitbucket link');
             $('#ajaxStuff').empty();
             display_bitbucketdata();
-        });     
+        });
     </script>
 </body>
 
