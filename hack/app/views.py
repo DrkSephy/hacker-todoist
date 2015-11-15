@@ -45,3 +45,15 @@ def events(request):
 					newData.remove(datum)
 			print newData	
 	return HttpResponse('Demo events')
+
+@csrf_exempt
+def fetchDatabase(request):
+	data = []
+	for entry in Entries.objects:
+		datum = {}
+		datum['due'] = entry.due
+		datum['title'] = entry.title
+		datum['username'] = entry.username
+		data.append(datum)
+	print data
+	return HttpResponse(json.dumps(data))
