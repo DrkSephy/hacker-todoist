@@ -75,3 +75,14 @@ def fetchDatabase(request):
 		data.append(datum)
 	print data
 	return HttpResponse(json.dumps(data))
+
+@csrf_exempt
+def fetchBitbucketDatabase(request):
+	data = []
+	for entry in BitbucketEntries.objects:
+		datum = {}
+		datum['due'] = entry.due
+		datum['title'] = entry.title
+		datum['username'] = entry.username
+		data.append(datum)
+	return HttpResponse(json.dumps(data))
