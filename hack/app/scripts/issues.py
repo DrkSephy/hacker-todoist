@@ -39,7 +39,6 @@ def batchTasks(username, repository, service):
 							user['username'] = datum['assignee']['login']
 							user['title'] = datum['title']
 							if datum['milestone'] != None:
-								print datum['milestone']
 								m = moment.date(datum['milestone']['due_on'], '%Y-%m-%dT%H:%M:%SZ')
 								user['due'] = m.format('YYYY-M-D H:M')
 							users.append(user)
