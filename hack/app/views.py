@@ -2,6 +2,10 @@ from scripts import issues
 from django.shortcuts import render, HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from mongoengine import *
+from models import Entries
+connect('tumblelog')
 
 # Create your views here.
 
@@ -15,8 +19,16 @@ def test(request):
 		repo = request.POST.get('repo')
 		service = request.POST.get('service')
 		data = issues.batchTasks(username, repo, service)
+		# Store in database
+		for datum in data:
+			print datum
+			if 'due' in datum:
+				entry = Entries(due=datum['due'], title=datum['title'], username=datum['username'])
+				entry.save()
+			else:
+				entry = Entries(due='', title=datum['title'], username=datum['username'])
+				entry.save()
 		return HttpResponse(json.dumps(data));
-		#return render(request, 'app/page.html', {'data': json.dumps(data)})
 	else:
 		print 'Not a post request?'
 		return render(request, 'app/page.html')
@@ -24,7 +36,12 @@ def test(request):
 @csrf_exempt
 def events(request):
 	if request.method == 'POST':
-		data = json.loads(request.body)
-		dataToRemove = data['issue']['title']
-		return render
+		if request.body:
+			data = json.loads(request.body)
+			dataToRemove = data['issue']['title']
+			newData = issues.batchTasks('DrkSephy', 'Shogi', 'github')
+			for datum in newData:
+				if datum['title'] == dataToRemove:
+					newData.remove(datum)
+			print newData	
 	return HttpResponse('Demo events')
