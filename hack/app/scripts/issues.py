@@ -25,8 +25,9 @@ def batchTasks(username, repository, service):
 	the specified service
 	"""
 	if service == 'github':
-		issues = requests.get('https://api.github.com/repos/' + username + '/' + repository + '/issues?state=all&client_id=f4c46f537e5abec0d5b0&client_secret=53ba628c38e4f8adca7d467573a13989b4546743')
+		issues = requests.get('https://api.github.com/repos/' + username + '/' + repository + '/issues?client_id=f4c46f537e5abec0d5b0&client_secret=53ba628c38e4f8adca7d467573a13989b4546743')
 		data = json.loads(issues.text)
+		print len(data)
 		# print 'https://api.github.com/repos/' + username + '/' + repository + '/issues?state=all&client_id=f4c46f537e5abec0d5b0&client_secret=53ba628c38e4f8adca7d467573a13989b4546743'
 
 		# Store all the User data (will be posted to Todoist)
