@@ -1,3 +1,8 @@
 from django.db import models
+from mongoengine import *
 
-# Create your models here.
+class Entries(Document):
+    due = StringField(required=True)
+    title = StringField(required=True)
+    username = StringField(required=True)
+
