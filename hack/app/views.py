@@ -37,14 +37,22 @@ def test(request):
 def events(request):
 	if request.method == 'POST':
 		if request.body:
+			allEntries = []
 			data = json.loads(request.body)
 			dataToRemove = data['issue']['title']
-			newData = issues.batchTasks('DrkSephy', 'Shogi', 'github')
-			for datum in newData:
-				if datum['title'] == dataToRemove:
-					newData.remove(datum)
-			print newData	
-	return HttpResponse('Demo events')
+			# Need to remove entry from database
+			for entry in Entries.objects:
+				datum = {}
+				if entry.title == dataToRemove:
+					print 'Removing entry'
+					entry.delete()
+				else:
+					datum['due'] = entry.due
+					datum['title'] = entry.title
+					datum['username'] = entry.username
+					allEntries.append(datum)
+		print allEntries
+	return HttpResponse(json.dumps(allEntries))
 
 @csrf_exempt
 def fetchDatabase(request):
