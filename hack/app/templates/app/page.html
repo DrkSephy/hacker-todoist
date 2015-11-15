@@ -128,6 +128,7 @@
                                 </tbody>
                             </table>
                         </li>
+
                         <li class="clickable menu_clickable indent_1">
                             <div class="invisible_space"></div>
                             <table cellpadding="0" cellspacing="0" class="item_table">
@@ -171,6 +172,50 @@
                             </table>
                         </li>
 
+                        <li class="clickable menu_clickable indent_1" style="display:none;" id="github_click">
+                            <div class="invisible_space"></div>
+                            <table cellpadding="0" cellspacing="0" class="item_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="td_color">
+                                            <div class="div_color counter_color icon-project" id="project_color_155700703" style="color: rgb(204, 204, 204);"></div>
+                                        </td>
+                                        <td>
+                                            <div class="td_separator" style="width: 2px;"></div>
+                                        </td>
+                                        <td class="name"><span>Github</span>
+                                            <div class="counter_count" id="project_count_155700703"></div>
+                                        </td>
+                                        <td class="menu">
+                                            <div class="icon menu cmp_menu_on gear_menu"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li class="clickable menu_clickable indent_1" style="display:none;" id="bucket_click">
+                            <div class="invisible_space"></div>
+                            <table cellpadding="0" cellspacing="0" class="item_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="td_color">
+                                            <div class="div_color counter_color icon-project" id="project_color_155700703" style="color: rgb(251, 136, 110);"></div>
+                                        </td>
+                                        <td>
+                                            <div class="td_separator" style="width: 2px;"></div>
+                                        </td>
+                                        <td class="name"><span>Bitbucket</span>
+                                            <div class="counter_count" id="project_count_155700703"></div>
+                                        </td>
+                                        <td class="menu">
+                                            <div class="icon menu cmp_menu_on gear_menu"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
                         <!-- Github Stuff -->
                         <li class="manager indent_1" id="github" style="display: none;">
                             <form id="login_form" method="post" action="/app/test/">
@@ -182,7 +227,7 @@
                                                 <table>
                                                     <tbody>
                                                         <tr>
-                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="User Name" value="" size="500" required autofocus>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" id="github_user" placeholder="User Name" value="" required autofocus>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -191,7 +236,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <tr>
-                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="Repo Name" value="" required autofocus>
+                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon service_input" id="github_repo" placeholder="Repo Name" value="" required autofocus>
                                                         </tr>
                                                         </tr>
                                                     </tbody>
@@ -218,7 +263,7 @@
                                             <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
                                             <td align="right" class="td_extra"></td>
                                           -->
-                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" type="submit">Get Github Data</button><a class="cancel" href="" tabindex="4">Cancel</a></td>
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItem()" type="submit">Get Github Data</button><a class="cancel" href="" tabindex="4">Cancel</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -227,7 +272,7 @@
 
                         <!-- Bitbucket stuff -->
                         <li class="manager indent_1" id="bitbucket" style="display: none;">
-                            <form id="login_form" method="post" action="/app/test/">
+                            <form id="login_form2" method="post" action="/app/test/">
                                 {% csrf_token %}
                                 <table width="100%">
                                     <tbody>
@@ -236,7 +281,7 @@
                                                 <table>
                                                     <tbody>
                                                         <tr>
-                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="User Name" value="" required autofocus>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" id="bucket_user" placeholder="User Name" value="" required autofocus>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -245,7 +290,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <tr>
-                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="Repo Name" value="" required autofocus>
+                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon service_input" id="bucket_repo" placeholder="Repo Name" value="" required autofocus>
                                                         </tr>
                                                         </tr>
                                                     </tbody>
@@ -272,13 +317,25 @@
                                             <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
                                             <td align="right" class="td_extra"></td>
                                           -->
-                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" type="submit">Get Bitbucket Data</button> <a class="cancel" href="" tabindex="4">Cancel</a></td>
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItemBit()" type="submit">Get Bitbucket Data</button> <a class="cancel" href="" tabindex="4">Cancel</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </form>
                         </li>
                     </ul>
+
+                    <!-- Button on-click -->
+                    <script>
+                        function addListItem(){
+                            $('#github_click').show();
+                        }
+
+                        function addListItemBit(){
+                            $('#bucket_click').show();
+                        }
+
+                    </script>
 
                     <div id="project_list_man" class="left_list_man_holder">
                         <div class="left_list_man actions"><a class="action"><span class="icon icon-add"></span>Add Project</a></div>
