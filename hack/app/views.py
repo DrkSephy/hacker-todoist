@@ -82,3 +82,11 @@ def fetchBitbucketDatabase(request):
 		datum['username'] = entry.username
 		data.append(datum)
 	return HttpResponse(json.dumps(data))
+
+@csrf_exempt
+def clearDatabases(request):
+	for entry in Entries.objects:
+		entry.delete()
+	for entry in BitbucketEntries.objects:
+		entry.delete()
+	return HttpResponse('Cleared the database!')
