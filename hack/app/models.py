@@ -8,5 +8,5 @@ class Entries(Document):
 
 class BitbucketEntries(Document):
 	due = StringField(required=True)
-    title = StringField(required=True)
-    username = StringField(required=True)
+	title = StringField(required=True)
+	username = StringField(required=True)

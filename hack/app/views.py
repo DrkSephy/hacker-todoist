@@ -19,6 +19,7 @@ def test(request):
 		repo = request.POST.get('repo')
 		service = request.POST.get('service')
 		data = issues.batchTasks(username, repo, service)
+		print service
 		# Store in database
 		if service == 'github':
 			for datum in data:
@@ -29,15 +30,10 @@ def test(request):
 				else:
 					entry = Entries(due='', title=datum['title'], username=datum['username'])
 					entry.save()
-		else:
+		if service == 'bitbucket':
 			for datum in data:
-				print datum
-				if 'due' in datum:
-					entry = BitbucketEntries(due=datum['due'], title=datum['title'], username=datum['username'])
-					entry.save()
-				else:
-					entry = BitbucketEntries(due=datum['due'], title=datum['title'], username=datum['username'])
-					entry.save()
+				entry = BitbucketEntries(due='', title=datum['title'], username=datum['username'])
+				entry.save()
 		return HttpResponse(json.dumps(data));
 	else:
 		print 'Not a post request?'
