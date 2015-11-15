@@ -2345,6 +2345,19 @@ li.manager form {
     font-size: 14px;
     min-height: 21px
 }
+
+.service_input {
+    font-size: 14px;
+    width: 210px;
+    line-height: 2em;
+    line-width: 6em;
+    outline-color: rgb(238, 238, 238);
+}
+
+li.manager .submit_red {
+    margin-top: 10px;
+}
+
 .manager .submit_btn {
     margin-top: 5px
 }

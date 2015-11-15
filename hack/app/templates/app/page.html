@@ -170,6 +170,8 @@
                                 </tbody>
                             </table>
                         </li>
+
+                        <!-- Github Stuff -->
                         <li class="manager indent_1" id="github" style="display: none;">
                             <form id="login_form" method="post" action="/app/test/">
                                 {% csrf_token %}
@@ -180,7 +182,7 @@
                                                 <table>
                                                     <tbody>
                                                         <tr>
-                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon" placeholder="User Name" value="" required autofocus>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="User Name" value="" size="500" required autofocus>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -189,7 +191,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <tr>
-                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon" placeholder="Repo Name" value="" required autofocus>
+                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="Repo Name" value="" required autofocus>
                                                         </tr>
                                                         </tr>
                                                     </tbody>
@@ -216,12 +218,14 @@
                                             <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
                                             <td align="right" class="td_extra"></td>
                                           -->
-                                          <button class="btn btn-lg btn-primary btn-block" type="submit">Get Github Data</button>
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" type="submit">Get Github Data</button>
                                         </tr>
                                     </tbody>
                                 </table>
                             </form>
                         </li>
+
+                        <!-- Bitbucket stuff -->
                         <li class="manager indent_1" id="bitbucket" style="display: none;">
                             <form id="login_form" method="post" action="/app/test/">
                                 {% csrf_token %}
@@ -232,7 +236,7 @@
                                                 <table>
                                                     <tbody>
                                                         <tr>
-                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon" placeholder="User Name" value="" required autofocus>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="User Name" value="" required autofocus>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -241,7 +245,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <tr>
-                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon" placeholder="Repo Name" value="" required autofocus>
+                                                            <input type="text" name="repo" class="form-control div_color counter_color icon-project menu_icon service_input" placeholder="Repo Name" value="" required autofocus>
                                                         </tr>
                                                         </tr>
                                                     </tbody>
@@ -268,7 +272,7 @@
                                             <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
                                             <td align="right" class="td_extra"></td>
                                           -->
-                                          <button class="btn btn-lg btn-primary btn-block" type="submit">Get Bitbucket Data</button>
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" type="submit">Get Bitbucket Data</button>
                                         </tr>
                                     </tbody>
                                 </table>
