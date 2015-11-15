@@ -32,13 +32,12 @@ def test(request):
 			repo = request.POST.get('repo')
 			service = request.POST.get('service')
 			data = issues.batchTasks(username, repo, service)
-			"""
+			
 			client.messages.create(
 			    to="+13473282978", 
 			    from_="+13473259195", 
 			    body="David, you have to present at Hack battle soon!", 
 			)
-			"""
 			# Store in database
 			if service == 'github':
 				for datum in data:
