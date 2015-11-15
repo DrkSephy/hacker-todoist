@@ -4,7 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from mongoengine import *
-from models import Entries
+from models import Entries, BitbucketEntries
 connect('tumblelog')
 
 # Create your views here.
@@ -19,14 +19,20 @@ def test(request):
 		repo = request.POST.get('repo')
 		service = request.POST.get('service')
 		data = issues.batchTasks(username, repo, service)
+		print service
 		# Store in database
-		for datum in data:
-			print datum
-			if 'due' in datum:
-				entry = Entries(due=datum['due'], title=datum['title'], username=datum['username'])
-				entry.save()
-			else:
-				entry = Entries(due='', title=datum['title'], username=datum['username'])
+		if service == 'github':
+			for datum in data:
+				print datum
+				if 'due' in datum:
+					entry = Entries(due=datum['due'], title=datum['title'], username=datum['username'])
+					entry.save()
+				else:
+					entry = Entries(due='', title=datum['title'], username=datum['username'])
+					entry.save()
+		if service == 'bitbucket':
+			for datum in data:
+				entry = BitbucketEntries(due='', title=datum['title'], username=datum['username'])
 				entry.save()
 		return HttpResponse(json.dumps(data));
 	else:
@@ -65,3 +71,22 @@ def fetchDatabase(request):
 		data.append(datum)
 	print data
 	return HttpResponse(json.dumps(data))
+
+@csrf_exempt
+def fetchBitbucketDatabase(request):
+	data = []
+	for entry in BitbucketEntries.objects:
+		datum = {}
+		datum['due'] = entry.due
+		datum['title'] = entry.title
+		datum['username'] = entry.username
+		data.append(datum)
+	return HttpResponse(json.dumps(data))
+
+@csrf_exempt
+def clearDatabases(request):
+	for entry in Entries.objects:
+		entry.delete()
+	for entry in BitbucketEntries.objects:
+		entry.delete()
+	return HttpResponse('Cleared the database!')
