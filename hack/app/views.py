@@ -4,7 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from mongoengine import *
-from models import Entries
+from models import Entries, BitbucketEntries
 connect('tumblelog')
 
 # Create your views here.
@@ -20,14 +20,24 @@ def test(request):
 		service = request.POST.get('service')
 		data = issues.batchTasks(username, repo, service)
 		# Store in database
-		for datum in data:
-			print datum
-			if 'due' in datum:
-				entry = Entries(due=datum['due'], title=datum['title'], username=datum['username'])
-				entry.save()
-			else:
-				entry = Entries(due='', title=datum['title'], username=datum['username'])
-				entry.save()
+		if service == 'github':
+			for datum in data:
+				print datum
+				if 'due' in datum:
+					entry = Entries(due=datum['due'], title=datum['title'], username=datum['username'])
+					entry.save()
+				else:
+					entry = Entries(due='', title=datum['title'], username=datum['username'])
+					entry.save()
+		else:
+			for datum in data:
+				print datum
+				if 'due' in datum:
+					entry = BitbucketEntries(due=datum['due'], title=datum['title'], username=datum['username'])
+					entry.save()
+				else:
+					entry = BitbucketEntries(due=datum['due'], title=datum['title'], username=datum['username'])
+					entry.save()
 		return HttpResponse(json.dumps(data));
 	else:
 		print 'Not a post request?'
