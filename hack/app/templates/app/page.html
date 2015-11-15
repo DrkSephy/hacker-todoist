@@ -215,6 +215,28 @@
                             </table>
                         </li>
 
+                        <li class="clickable menu_clickable indent_1" style="display:none;" id="bucket_click">
+                            <div class="invisible_space"></div>
+                            <table cellpadding="0" cellspacing="0" class="item_table">
+                                <tbody>
+                                    <tr>
+                                        <td class="td_color">
+                                            <div class="div_color counter_color icon-project" id="project_color_155700703" style="color: rgb(251, 136, 110);"></div>
+                                        </td>
+                                        <td>
+                                            <div class="td_separator" style="width: 2px;"></div>
+                                        </td>
+                                        <td class="name" id="twiliomessages"><a><span style="color: #303333">Twilio SMS</span></a>
+                                            <div class="counter_count" id="project_count_155700703"></div>
+                                        </td>
+                                        <td class="menu">
+                                            <div class="icon menu cmp_menu_on gear_menu"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
                         <!-- Github Stuff -->
                         <li class="manager indent_1" id="github" style="display: none;">
                             <form id="login_form" method="post" action="/app/test/">
@@ -263,6 +285,57 @@
                                             <td align="right" class="td_extra"></td>
                                           -->
                                           <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItem()" type="submit">Get Github Data</button><a class="cancel" href="" tabindex="4">Cancel</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </li>
+
+                        <!-- Twillio stuff -->
+                        <li class="manager indent_1" id="twillio" style="display: none;">
+                            <form id="login_form3" method="post" action="/app/test/">
+                                {% csrf_token %}
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" class="form_content">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" id="twillio_user" placeholder="Phone Number" value="" required autofocus>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                               <!-- <table>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <input type="hidden" name="service" id="twillioService" class="form-control div_color counter_color icon-project menu_icon" placeholder="twillio" value="github" required autofocus>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>-->
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                          <!--
+                                            <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
+                                            <td align="right" class="td_extra"></td>
+                                          -->
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItemBit()" type="submit">Subscribe</button> 
+
+                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" align="right" onclick="" type="submit">Unubscribe</button> 
+
+                                          
+
+                                         <!-- <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItem()" type="submit">Unsubscribe from SMS</button>-->
                                         </tr>
                                     </tbody>
                                 </table>
@@ -322,53 +395,6 @@
                                 </table>
                             </form>
                         </li>
-
-                        <!-- Twillio stuff -->
-                        <li class="manager indent_1" id="twillio" style="display: none;">
-                            <form id="login_form3" method="post" action="/app/test/">
-                                {% csrf_token %}
-                                <table width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="2" class="form_content">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <input type="text" name="user" class="form-control div_color counter_color icon-project menu_icon service_input" id="twillio_user" placeholder="Phone Number" value="" required autofocus>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-                                               <!-- <table>
-                                                    <tbody>
-
-                                                        <tr>
-                                                            <input type="hidden" name="service" id="twillioService" class="form-control div_color counter_color icon-project menu_icon" placeholder="twillio" value="github" required autofocus>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>-->
-
-                                            </td>
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                          <!--
-                                            <td align="left" id="Hello"><a href="" class="amibutton amibutton_red submit_btn" type="submit"><span>Add Github Project</span></a><a class="cancel" href="" tabindex="4">Cancel</a></td>
-                                            <td align="right" class="td_extra"></td>
-                                          -->
-                                          <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItemBit()" type="submit">SMS Notifications</button> <a class="cancel" href="" tabindex="4">Cancel</a></td>
-
-                                         <!-- <button class="btn btn-lg btn-primary btn-block amibutton amibutton_red submit_btn submit_red" onclick="addListItem()" type="submit">Unsubscribe from SMS</button>-->
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-                        </li>
                     </ul>
 
 
@@ -389,6 +415,7 @@
                         <div class="left_list_man actions" id="thingy"><a class="action"><span class="icon icon-add" id="#thing1"></span>Add Github Project</a></div>
                         <div class="left_list_man actions" id="thingy2"><a class="action"><span class="icon icon-add" id="#thing2"></span>Add Bitbucket Project</a></div>
                         <div class="left_list_man actions" id="thingy3"><a class="action"><span class="icon icon-add" id="#thing3"></span>Add SMS Notifications</a></div>
+                    </div>
 
                         <!-- To do the click thing -->
                         <script>
@@ -419,13 +446,14 @@
 
                         <script>
                             $("#thingy3").click(function(){
+                                console.log('clicked');
                                 $('#twillio').show();
 
                                 $('#github').hide();
 
                                 $('#bitbucket').hide();
 
-                            }
+                            });
                         </script>
 
                         <div class="controller actions his_ctrl" id="projects_archived_holder">
