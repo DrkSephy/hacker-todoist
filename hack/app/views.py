@@ -7,8 +7,15 @@ def index(request):
 	return HttpResponse('Hello!')
 
 def test(request):
-	data = issues.batchTasks('legionJS', 'legionJS')
-	print data
-	return render(request, 'app/page.html', {'data': data})
+	if request.method == 'POST':
+		username = request.POST.get('user')
+		repo = request.POST.get('repo')
+		service = request.POST.get('service')
+		print service
+		data = issues.batchTasks(username, repo, service)
+		return render(request, 'app/page.html', {'data': data})
+	else:
+		print 'Not a post request?'
+		return render(request, 'app/page.html')
 
 
