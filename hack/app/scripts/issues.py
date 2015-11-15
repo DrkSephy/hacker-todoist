@@ -2,7 +2,6 @@
 import requests
 import json
 import moment
-import bitbucket
 
 
 def batchBitbucketTasks(username, repository):
