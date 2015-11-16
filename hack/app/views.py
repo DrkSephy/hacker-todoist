@@ -7,13 +7,14 @@ from mongoengine import *
 from models import Entries, BitbucketEntries, Notifications
 from twilio.rest import TwilioRestClient 
 
-account_sid = "AC7889a1889c1833bd7181e45e60372776"
-auth_token = "ff941c0db497765c7852909086c77ef1"
+# Twilio tokens
+account_sid = ""
+auth_token = ""
 client = TwilioRestClient(account_sid, auth_token) 
 
+# Connect to local mongodb instance
 connect('tumblelog')
 
-# Create your views here.
 
 def index(request):
 	return HttpResponse('Hello!')
@@ -34,9 +35,9 @@ def test(request):
 			data = issues.batchTasks(username, repo, service)
 			
 			client.messages.create(
-			    to="+13473282978", 
-			    from_="+13473259195", 
-			    body="David, you have to present at Hack battle soon!", 
+			    to="", # User's phone number
+			    from_="", # Twilio Phone Number
+			    body="Your message here", 
 			)
 			# Store in database
 			if service == 'github':
